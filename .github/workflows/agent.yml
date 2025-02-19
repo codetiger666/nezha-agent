@@ -1,21 +1,7 @@
 name: Build + Release
 
 on:
-  push:
-    tags:
-      - "v*"
-    branches:
-      - main
-    paths-ignore:
-      - ".github/workflows/agent.yml"
-      - ".github/workflows/codeql-analysis.yml"
-      - ".github/workflows/test.yml"
-      - ".github/workflows/contributors.yml"
-      - "README.md"
-      - ".goreleaser.yml"
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -55,7 +41,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: "1.20.14"
+          go-version: "1.23.6"
 
       - name: Generate
         run: |
